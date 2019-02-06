@@ -75,9 +75,9 @@
 Change these:
 
 ``` diff
-    - "build": "vue-cli-service build",
-    + "prebuild": "babel node_modules/@vue/web-component-wrapper/dist/vue-wc-wrapper.js -o node_modules/@vue/web-component-wrapper/dist/vue-wc-wrapper.js",
-    + "build": "vue-cli-service build --name {component-name} --target wc src/components/{component-name}.vue",
+- "build": "vue-cli-service build",
++ "prebuild": "babel node_modules/@vue/web-component-wrapper/dist/vue-wc-wrapper.js -o node_modules/@vue/web-component-wrapper/dist/vue-wc-wrapper.js",
++ "build": "vue-cli-service build --name {component-name} --target wc src/components/{component-name}.vue",
 ```
 
 Javascript sample:
