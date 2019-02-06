@@ -2,15 +2,21 @@
   "name": "speedy-vue",
   "version": "0.1.0",
   "private": true,
+  "main": "dist/speedyvue.js",
+  "source": "src/components/speedyvue.vue",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "prebuild": "babel node_modules/@vue/web-component-wrapper/dist/vue-wc-wrapper.js -o node_modules/@vue/web-component-wrapper/dist/vue-wc-wrapper.js",
+    "build": "vue-cli-service build --name speedy-vue --target wc src/components/speedyvue.vue",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "vue": "^2.5.22"
   },
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.3.1",
     "@vue/cli-plugin-babel": "^3.4.0",
     "@vue/cli-plugin-eslint": "^3.4.0",
     "@vue/cli-service": "^3.4.0",
