@@ -165,13 +165,8 @@ the rest of the required editing in the IDE.
 
 E. Rename the generated HelloWorld file:
 
-``` diff
-- src/components/HelloWorld.vue
-+ src/components/{component-name}.vue
-```
-
-| Old Name                                   | New Name                                         |
-| ------------------------------------------ | ------------------------------------------------ |
+| from  | to    |
+| ----- | ----- |
 | src/components/<span style="background-color: #ffff88">HelloWorld</span>.vue | src/components/<span style="background-color: #ffff88">{component-name}</span>.vue |
 
 
