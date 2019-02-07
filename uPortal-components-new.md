@@ -169,6 +169,9 @@ E. Rename the generated HelloWorld file:
 | ----- | ----- |
 | src/components/<span style="background-color: #ffff88">HelloWorld</span>.vue | src/components/<span style="background-color: #ffff88">{component-name}</span>.vue |
 
+**from:** src/components/<span style="background-color: #ffff88">HelloWorld</span>.vue
+
+**to:** src/components/<span style="background-color: #ffff88">{component-name}</span>.vue
 
 ## Got to here
 
