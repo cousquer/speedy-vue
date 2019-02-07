@@ -6,14 +6,14 @@
     2. [Vue CLI](#vue-cli)
     3. [Maven](#maven)
     4. [Gradle](#gradle)
-2. [Generate the Vue app](#2-generate-the-vue-app)
-    1. create gradle.properties file
-    2. create build.gradle file
+2. [Generate the Vue application](#2-generate-the-vue-application)
+    1. [create gradle.properties file](#create-gradleproperties-file)
+    2. [create build.gradle file](#create-buildgradle-file)
     3. rename .vue file
     4. edit App.vue file
     5. edit package.json file
-3. [Edit the Vue app](#3-edit-the-vue-app)
-4. [Assemble and deploy the Vue app](#4-assemble-and-deploy-the-vue-app)
+3. [Edit the Vue application](#3-edit-the-vue-application)
+4. [Assemble and deploy the Vue application](#4-assemble-and-deploy-the-vue-application)
 5. [Add the component into uPortal](#5-add-the-component-into-uportal)
 
 ## 1. Prerequisites
@@ -45,7 +45,7 @@ tested with maven version 3.6.
 Use the appropriate package manager for your OS. These instructions were
 tested with gradle 5.2.
 
-## 2. Generate the Vue app
+## 2. Generate the Vue application
 Replace `{component-name}` with the desired name for the component.
 
 ``` bash
@@ -59,20 +59,25 @@ cd {component-name}
 npm install --save-dev @babel/{cli,plugin-transform-runtime,preset-env}
 ```
 
-## 3. Edit the Vue app
-A. In the root directory, create a **gradle.properties** file, with the
+## 3. Edit the Vue application
+
+### Create gradle.properties file
+
+In the root directory, create a **gradle.properties** file, with the
 following content:
 ```
 group=org.webjars.npm
 ```
 
-B. Copy **build.gradle** file from @uportal directory of **uPortal-web-components**
-project.
+### Create build.gradle file
+
+Copy **build.gradle** file from @uportal directory of **uPortal-web-components**
+project (or use one from [the appendix](#buildgradle-files)).
 
 https://github.com/uPortal-contrib/uPortal-web-components/blob/master/%40uportal/build.gradle
 
-C. Remove the subprojects line and its enclosing brackets from **build.gradle**
-file. For example:
+If using the one from uPortal-web-components, remove the subprojects line and
+its enclosing brackets; for example:
 
 ``` diff
 - subprojects {
@@ -220,7 +225,7 @@ More stuff here:
 
 ```
 
-#### 4. Assemble and deploy the Vue app
+#### 4. Assemble and deploy the Vue application
 
 ```
     # Packs the component
