@@ -2,11 +2,16 @@
 
 ## Step by Step guide for vue.js component
 1. [Prerequisites](#1-prerequisites)
-    - [Node.js](#nodejs)
-    - [Vue CLI](#vue-cli)
-    - [Maven](#maven)
-    - [Gradle](#gradle)
+    1. [Node.js](#nodejs)
+    2. [Vue CLI](#vue-cli)
+    3. [Maven](#maven)
+    4. [Gradle](#gradle)
 2. [Generate the Vue app](#2-generate-the-vue-app)
+    1. create gradle.properties file
+    2. create build.gradle file
+    3. rename .vue file
+    4. edit App.vue file
+    5. edit package.json file
 3. [Edit the Vue app](#3-edit-the-vue-app)
 4. [Assemble and deploy the Vue app](#4-assemble-and-deploy-the-vue-app)
 5. [Add the component into uPortal](#5-add-the-component-into-uportal)
@@ -124,15 +129,16 @@ Note: now that the project has a build.gradle file and a Gradle wrapper, an
 IDE like IntelliJ IDEA will recognize it as a Gradle project. You could do
 the rest of the required editing in the IDE.
 
-E. Rename the generated HelloWorld file:
+E. Rename the generated HelloWorld file (replace **{component-name}** with
+desired name):
 
-| from  | to    |
-| ----- | ----- |
-| src/components/<span style="background-color: #ffff88">HelloWorld</span>.vue | src/components/<span style="background-color: #ffff88">{component-name}</span>.vue |
+```
+FROM:
+src/components/HelloWorld.vue
 
-**from:** src/components/<span style="background-color: #ffff88">HelloWorld</span>.vue
-
-**to:** src/components/<span style="background-color: #ffff88">{component-name}</span>.vue
+TO:
+src/components/{component-name}.vue
+```
 
 ## Got to here
 
@@ -318,8 +324,8 @@ jar {
 
 #### build.gradle for Windows
 
-Windows has a quirk that this build.gradle file works around. This will also
-work on Mac OS and Linux.
+Windows has a quirk that the copyFiles and cleanUp tasks in this build.gradle
+file works around. This will also work on Mac OS and Linux.
 
 ```
 apply plugin: 'java'
