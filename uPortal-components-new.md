@@ -40,6 +40,7 @@ tested with maven version 3.6.
 Use the appropriate package manager for your OS. These instructions were
 tested with gradle 5.2.
 
+
 ## 2. Generate the Vue app
 Replace `{component-name}` with the desired name for the component.
 
@@ -55,13 +56,13 @@ npm install --save-dev @babel/{cli,plugin-transform-runtime,preset-env}
 ```
 
 
+
 ## 3. Edit the Vue app
 A. In the root directory, create a **gradle.properties** file, with the
 following content:
 ```
 group=org.webjars.npm
 ```
-
 
 B. Copy **build.gradle** file from @uportal directory of **uPortal-web-components**
 project.
@@ -172,6 +173,7 @@ E. Rename the generated HelloWorld file:
 + src/components/{component-name}.vue
 ```
 
+
 ## Got to here
 
 
@@ -252,6 +254,7 @@ More stuff here:
 
 ```
 
+
 #### 4. Assemble and deploy the Vue app
 
 ```
@@ -263,6 +266,7 @@ More stuff here:
 
     $ ./gradlew install
 ```
+
 
 #### 5. Add the component into uPortal
 
@@ -306,6 +310,7 @@ More stuff here:
              runtime "org.webjars.npm:uportal__{component-name}:0.1.0-SNAPSHOT@jar"
 
 ```
+
 
 # Appendix
 ## Node.js installation
