@@ -109,9 +109,9 @@ It should look something like this:
     }
 ```
 
-Or if you want to produce the slimmest, quickest .jar possible to reduce
-traffic on the resource server, that will build on Linux, Mac OS *and*
-Windows, use this for your **build.gradle**:
+**Note:** to produce the most compact .jar possible to reduce traffic on the
+resource server and speed up browser response, or if you are building on
+Windows, try this one for Linux and Mac OS or this one for Windows.
 
 ```
 apply plugin: 'java'
@@ -324,6 +324,81 @@ sudo port install nodejs10
 ```
 brew search node
 brew install node
+```
+
+## build.gradle files
+
+To produce really compact .jar files that the uPortal resource server will
+deliver to the user's browser, try these. All the extraneous files except
+for the *.min.js file are excluded from the .jar file that gets built.
+
+#### build.gradle for Linux and Mac OS
+
+```
+apply plugin: 'java'
+apply plugin: 'maven'
+
+def jsonFile = file("${projectDir}/package.json")
+def parsedJson = new groovy.json.JsonSlurper().parseText(jsonFile.text)
+project.version = parsedJson.version + '-SNAPSHOT'
+
+jar {
+    baseName "uportal__${project.name}"
+    from '.'
+    include 'META-INF'
+    include 'dist/*'
+    exclude "dist/demo.html"
+    exclude "dist/${project.name}.js"
+    exclude "dist/${project.name}.js.map"
+    exclude "dist/${project.name}.min.js.map"
+    into "META-INF/resources/webjars/uportal__${project.name}/${project.version}"
+}
+```
+
+#### build.gradle for Windows
+
+Windows has a quirk that this build.gradle file works around. This will also
+work on Mac OS and Linux.
+
+```
+apply plugin: 'java'
+apply plugin: 'maven'
+
+def jsonFile = file("${projectDir}/package.json")
+def parsedJson = new groovy.json.JsonSlurper().parseText(jsonFile.text)
+project.version = parsedJson.version + '-SNAPSHOT'
+
+
+task copyFiles{
+    copy{
+        from ('.'){
+            exclude '*.lock'
+            exclude '**/*.lock'
+            exclude 'build/*'
+            exclude 'node_modules/*'
+        }
+        into 'build_tmp/target/content'
+    }
+}
+
+jar {
+    baseName "uportal__${project.name}"
+    from '.'
+    include 'META-INF'
+    include 'dist/*'
+    exclude "dist/demo.html"
+    exclude "dist/${project.name}.js"
+    exclude "dist/${project.name}.js.map"
+    exclude "dist/${project.name}.min.js.map"
+    into "META-INF/resources/webjars/uportal__${project.name}/${project.version}"
+}
+
+task cleanUp(type: Delete) {
+    delete 'build_tmp'
+    followSymlinks = true
+}
+
+jar.finalizedBy cleanUp
 ```
 
 
