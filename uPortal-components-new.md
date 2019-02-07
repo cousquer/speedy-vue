@@ -111,8 +111,8 @@ It should look something like this:
 
 **Note:** to produce the most compact .jar possible to reduce traffic on the
 resource server and speed up browser response, or if you are building on
-Windows, try [this gradle.build for Linux and Mac OS](#buildgradle-for-linux-and-mac-os)
-or [this gradle.build for Windows](#buildgradle-for-windows).
+Windows, try this [build.gradle for Linux and Mac OS](#buildgradle-for-linux-and-mac-os)
+or this [build.gradle for Windows](#buildgradle-for-windows).
 
 D. Add the Gradle wrapper (gradlew) to the project.
 
