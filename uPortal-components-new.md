@@ -2,10 +2,10 @@
 
 ## Step by Step guide for vue.js component
 1. [Prerequisites](#1-prerequisites)
-    - [Node.js](#node.js)
-    - [Vue CLI](https://cli.vuejs.org/)
-    - [Maven](https://maven.apache.org/)
-    - [Gradle](https://gradle.org/)
+    - [Node.js](#nodejs)
+    - [Vue CLI](#vue-cli)
+    - [Maven](#maven)
+    - [Gradle](#gradle)
 2. [Generate the Vue app](#2-generate-the-vue-app)
 3. [Edit the Vue app](#3-edit-the-vue-app)
 4. [Assemble and deploy the Vue app](#4-assemble-and-deploy-the-vue-app)
