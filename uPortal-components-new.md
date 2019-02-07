@@ -40,7 +40,6 @@ tested with maven version 3.6.
 Use the appropriate package manager for your OS. These instructions were
 tested with gradle 5.2.
 
-
 ## 2. Generate the Vue app
 Replace `{component-name}` with the desired name for the component.
 
