@@ -1,15 +1,15 @@
 # Develop Vue Web Components for uPortal
 
 ## Step by Step guide for vue.js component
-1. [Prerequisites](#Preqs)
+1. [Prerequisites](#1-prerequisites)
     - [Node.js](https://nodejs.org/)
     - [Vue CLI](https://cli.vuejs.org/)
     - [Maven](https://maven.apache.org/)
     - [Gradle](https://gradle.org/)
-2. Generate the Vue app
-3. Edit the Vue app
-4. Assemble and deploy the Vue app
-5. Add the component into uPortal
+2. [Generate the Vue app](#2-generate-the-vue-app)
+3. [Edit the Vue app](#3-edit-the-vue-app)
+4. [Assemble and deploy the Vue app](#4-assemble-and-deploy-the-vue-app)
+5. [Add the component into uPortal](#5-add-the-component-into-uportal)
 
 # Prereqs
 ## 1. Prerequisites
@@ -194,7 +194,7 @@ More stuff here:
 
 ```
 
-#### Assembling the vue app
+#### 4. Assemble and deploy the Vue app
 
 ```
     # Packs the component
@@ -206,7 +206,7 @@ More stuff here:
     $ ./gradlew install
 ```
 
-#### Adding the component into uPortal
+#### 5. Add the component into uPortal
 
 ```
     1. Make a copy of the portlet definition file and rename:
