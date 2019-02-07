@@ -111,47 +111,8 @@ It should look something like this:
 
 **Note:** to produce the most compact .jar possible to reduce traffic on the
 resource server and speed up browser response, or if you are building on
-Windows, try this one for Linux and Mac OS or this one for Windows.
-
-```
-apply plugin: 'java'
-apply plugin: 'maven'
-
-def jsonFile = file("${projectDir}/package.json")
-def parsedJson = new groovy.json.JsonSlurper().parseText(jsonFile.text)
-project.version = parsedJson.version + '-SNAPSHOT'
-
-task copyFiles{
-    copy{
-        from ('.'){
-            exclude '*.lock'
-            exclude '**/*.lock'
-            exclude 'build/*'
-            exclude 'node_modules/*'
-        }
-        into 'build_tmp/target/content'
-    }
-}
-
-jar {
-    baseName "uportal__${project.name}"
-    from '.'
-    include 'META-INF'
-    include 'dist/*'
-    exclude "dist/demo.html"
-    exclude "dist/${project.name}.js"
-    exclude "dist/${project.name}.js.map"
-    exclude "dist/${project.name}.min.js.map"
-    into "META-INF/resources/webjars/uportal__${project.name}/${project.version}"
-}
-
-task cleanUp(type: Delete) {
-    delete 'build_tmp'
-    followSymlinks = true
-}
-
-jar.finalizedBy cleanUp
-```
+Windows, try [this gradle.build for Linux and Mac OS](#buildgradle-for-linux-and-mac-os)
+or [this gradle.build for Windows](#buildgradle-for-windows).
 
 D. Add the Gradle wrapper (gradlew) to the project.
 
