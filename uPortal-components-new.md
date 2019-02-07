@@ -2,7 +2,7 @@
 
 ## Step by Step guide for vue.js component
 1. [Prerequisites](#1-prerequisites)
-    - [Node.js](https://nodejs.org/)
+    - [Node.js](#node.js)
     - [Vue CLI](https://cli.vuejs.org/)
     - [Maven](https://maven.apache.org/)
     - [Gradle](https://gradle.org/)
@@ -11,9 +11,8 @@
 4. [Assemble and deploy the Vue app](#4-assemble-and-deploy-the-vue-app)
 5. [Add the component into uPortal](#5-add-the-component-into-uportal)
 
-# Prereqs
 ## 1. Prerequisites
-#### Node
+#### Node.js
 If you don't have node installed there are several ways to do it. One
 way is to use [Node Version Manager](https://github.com/creationix/nvm)
 (nvm):
