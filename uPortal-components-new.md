@@ -14,21 +14,20 @@
 ## 1. Prerequisites
 #### Node.js
 If you don't have node installed there are several ways to do it. One
-way is to use [Node Version Manager](https://github.com/creationix/nvm)
-(nvm):
+way is to use Node Version Manager ([nvm](https://github.com/creationix/nvm)).
 
 ``` bash
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 ```
 
-Install the latest Long Term Support (LTS) version of node (currently 10.15.1):
+Install the latest Long Term Support (LTS) version of node (currently 10.15.1).
 
 ``` bash
 nvm install node
 ```
 
 #### Vue CLI
-If you dont have Vue cli installed:
+If you dont have Vue cli installed (Node must already be installed).
 ``` bash
 npm install --global @vue/cli
 ```
@@ -48,7 +47,7 @@ Replace `{component-name}` with the desired name for the component.
 vue create {component-name} --default
 ```
 
-Install dependencies for legacy browser support in the newly generated app:
+Install dependencies for legacy browser support in the newly generated app.
 ``` bash
 cd {component-name}
 
@@ -57,19 +56,19 @@ npm install --save-dev @babel/{cli,plugin-transform-runtime,preset-env}
 
 
 ## 3. Edit the Vue app
-In the root directory, create a **gradle.properties** file, with the
+A. In the root directory, create a **gradle.properties** file, with the
 following content:
 ```
 group=org.webjars.npm
 ```
 
 
-Copy build.gradle file from @uportal directory of uPortal-web-components
-project:
+B. Copy **build.gradle** file from @uportal directory of **uPortal-web-components**
+project.
 
 https://github.com/uPortal-contrib/uPortal-web-components/blob/master/%40uportal/build.gradle
 
-Remove the subprojects line and its enclosing brackets from build.gradle
+C. Remove the subprojects line and its enclosing brackets from **build.gradle**
 file. For example:
 
 ``` diff
@@ -93,7 +92,7 @@ file. For example:
 - }
 ```
 
-or
+It should look something like this:
 
 ``` gradle
     apply plugin: 'java'
@@ -112,6 +111,66 @@ or
     }
 ```
 
+Or if you want to produce the slimmest, quickest .jar possible to reduce
+traffic on the resource server, that will build on Linux, Mac OS *and*
+Windows, use this for your **build.gradle**:
+
+```
+apply plugin: 'java'
+apply plugin: 'maven'
+
+def jsonFile = file("${projectDir}/package.json")
+def parsedJson = new groovy.json.JsonSlurper().parseText(jsonFile.text)
+project.version = parsedJson.version + '-SNAPSHOT'
+
+task copyFiles{
+    copy{
+        from ('.'){
+            exclude '*.lock'
+            exclude '**/*.lock'
+            exclude 'build/*'
+            exclude 'node_modules/*'
+        }
+        into 'build_tmp/target/content'
+    }
+}
+
+jar {
+    baseName "uportal__${project.name}"
+    from '.'
+    include 'META-INF'
+    include 'dist/*'
+    exclude "dist/demo.html"
+    exclude "dist/${project.name}.js"
+    exclude "dist/${project.name}.js.map"
+    exclude "dist/${project.name}.min.js.map"
+    into "META-INF/resources/webjars/uportal__${project.name}/${project.version}"
+}
+
+task cleanUp(type: Delete) {
+    delete 'build_tmp'
+    followSymlinks = true
+}
+
+jar.finalizedBy cleanUp
+```
+
+D. Add the Gradle wrapper (gradlew) to the project.
+
+```
+gradle wrapper --gradle-version=5.1.1
+```
+
+Note: now that the project has a build.gradle file and a Gradle wrapper, an
+IDE like IntelliJ IDEA will recognize it as a Gradle project. You could do
+the rest of the required editing in the IDE.
+
+E. Rename the generated HelloWorld file:
+
+``` diff
+- src/components/HelloWorld.vue
++ src/components/{component-name}.vue
+```
 
 ## Got to here
 
