@@ -174,6 +174,10 @@ E. Rename the generated HelloWorld file:
 | ------------------------------------------ | ------------------------------------------------ |
 | src/components/<mark>HelloWorld</mark>.vue | src/components/<mark>{component-name}</mark>.vue |
 
+from: src/components/<mark>HelloWorld</mark>.vue
+
+to: src/components/<mark>{component-name}</mark>.vue
+
 
 ## Got to here
 
