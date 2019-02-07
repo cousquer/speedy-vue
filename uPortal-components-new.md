@@ -172,11 +172,7 @@ E. Rename the generated HelloWorld file:
 
 | Old Name                                   | New Name                                         |
 | ------------------------------------------ | ------------------------------------------------ |
-| src/components/<mark>HelloWorld</mark>.vue | src/components/<mark>{component-name}</mark>.vue |
-
-from: src/components/<mark>HelloWorld</mark>.vue
-
-to: src/components/<mark>{component-name}</mark>.vue
+| src/components/<span style="background-color: #ffff88">HelloWorld</span>.vue | src/components/<span style="background-color: #ffff88">{component-name}</span>.vue |
 
 
 ## Got to here
