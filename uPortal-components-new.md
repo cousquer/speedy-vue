@@ -54,8 +54,6 @@ cd {component-name}
 npm install --save-dev @babel/{cli,plugin-transform-runtime,preset-env}
 ```
 
-
-
 ## 3. Edit the Vue app
 A. In the root directory, create a **gradle.properties** file, with the
 following content:
@@ -172,6 +170,10 @@ E. Rename the generated HelloWorld file:
 + src/components/{component-name}.vue
 ```
 
+| Old Name                                   | New Name                                         |
+| ------------------------------------------ | ------------------------------------------------ |
+| src/components/<mark>HelloWorld</mark>.vue | src/components/<mark>{component-name}</mark>.vue |
+
 
 ## Got to here
 
@@ -253,7 +255,6 @@ More stuff here:
 
 ```
 
-
 #### 4. Assemble and deploy the Vue app
 
 ```
@@ -265,7 +266,6 @@ More stuff here:
 
     $ ./gradlew install
 ```
-
 
 #### 5. Add the component into uPortal
 
@@ -309,7 +309,6 @@ More stuff here:
              runtime "org.webjars.npm:uportal__{component-name}:0.1.0-SNAPSHOT@jar"
 
 ```
-
 
 # Appendix
 ## Node.js installation
