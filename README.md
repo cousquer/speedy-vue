@@ -14,7 +14,7 @@
     4. [rename HelloWorld.vue](#rename-helloworldvue)
     5. [edit App.vue](#edit-appvue)
         1. [optional edits in App.vue](#optional-edits-in-appvue)
-        2. [optional edits in {component-name}.vue](#)
+        2. [optional edits in {component-name}.vue](#optional-edits-in-component-namevue)
     6. [edit package.json](#edit-packagejson)
     7. [edit babel.config.js](#edit-babelconfigjs)
 4. [Assemble and deploy the Vue application](#4-assemble-and-deploy-the-vue-application)
