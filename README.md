@@ -183,18 +183,17 @@ your `{ComponentName}`:
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <{ComponentName} msg="Hello World!"/>
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
-
-import {ComponentName} from './components/{component-name}.vue'
+import HelloWorld from './components/{component-name}.vue'
 
 export default {
   name: 'app',
   components: {
-    {ComponentName}
+    HelloWorld
   }
 }
 </script>
