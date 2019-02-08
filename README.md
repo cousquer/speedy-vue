@@ -216,9 +216,10 @@ export default {
 
 ### Edit package.json
 
-In **package.json** the `{component-name}` after `--name` _**must**_ have a
-hyphen, for example `--name weather-thingy`. Change the following and
-replace `{component-name}` with yours:
+**Note:** in **package.json** the `{component-name}` after `--name` _**must**_
+have a hyphen; for example `--name weather-thingy`.
+
+Change the following and replace `{component-name}` with yours:
 
 ```
 // FROM:
@@ -261,7 +262,7 @@ It should look something like this when you've finished editing:
 
 Replace the contents of **babel.config.js** with this:
 
-```
+``` javascript
 module.exports = {
     presets: ['@babel/preset-env'],
     plugins: [['@babel/plugin-transform-runtime', { useESModules: true }]]
