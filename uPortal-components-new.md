@@ -163,19 +163,14 @@ import HelloWorld from './components/{component-name}.vue'
 
 ### Edit package.json
 
-A. First edit the sripts:
+The `{component-name}` after `--name` **must** have a
+hyphen, for example '--name weather-thingy'. Change the following:
 
-```diff
-- "build": "vue-cli-service build",
-+ "prebuild": "babel node_modules/@vue/web-component-wrapper/dist/vue-wc-wrapper.js -o node_modules/@vue/web-component-wrapper/dist/vue-wc-wrapper.js",
-+ "build": "vue-cli-service build --name {component-name} --target wc src/components/{component-name}.vue",
-```
-
-```
+``` json
 // FROM:
     "build": "vue-cli-service build",
 
-// TO:
+// TO (be sure to rename {component-name}:
     "prebuild": "babel node_modules/@vue/web-component-wrapper/dist/vue-wc-wrapper.js -o node_modules/@vue/web-component-wrapper/dist/vue-wc-wrapper.js",
     "build": "vue-cli-service build --name {component-name} --target wc src/components/{component-name}.vue",
 
