@@ -293,7 +293,6 @@ project can find it, run:
 ./gradlew install
 ```
 
-
 ## 5. Add the component into uPortal
 
 The following is done in the **uPortal-start** project.
@@ -405,7 +404,7 @@ To grant permission to everyone to browse for the web component and select it:
 
 ### Add webjar to resource server
 
-In the `overlays/resource-server/build.gradle` file in the uPortal-start
+In the **overlays/resource-server/build.gradle** file in the uPortal-start
 project, add the following runtime dependency:
 
 ```
