@@ -7,6 +7,7 @@
     3. [Maven](#maven)
     4. [Gradle](#gradle)
 2. [Generate the Vue application](#2-generate-the-vue-application)
+3. [Edit the Vue application](#3-edit-the-vue-application)
     1. [create gradle.properties](#create-gradleproperties)
     2. [create build.gradle](#create-buildgradle)
     3. [add Gradle wrapper (gradlew) to the project](#add-gradle-wrapper-to-project)
@@ -14,9 +15,9 @@
     5. [edit App.vue](#edit-appvue)
     6. [edit package.json](#edit-packagejson)
     7. [edit babel.config.js](#edit-babelconfigjs)
-3. [Edit the Vue application](#3-edit-the-vue-application)
 4. [Assemble and deploy the Vue application](#4-assemble-and-deploy-the-vue-application)
 5. [Add the component into uPortal](#5-add-the-component-into-uportal)
+    1. [create a portlet-definition.xml](#create-a-portlet-definitionxml)
 
 ## 1. Prerequisites
 #### Node.js
@@ -167,7 +168,7 @@ import HelloWorld from './components/{component-name}.vue'
 The `{component-name}` after `--name` _**must**_ have a
 hyphen, for example `--name weather-thingy`. Change the following:
 
-``` json
+```
 // FROM:
     "build": "vue-cli-service build",
 
@@ -179,20 +180,26 @@ hyphen, for example `--name weather-thingy`. Change the following:
 
 Add these top-level declarations:
 
-``` json
+```
   "main": "dist/{component-name}.js",
   "source": "src/components/{component-name}.vue",
 ```
 
 For example:
 
-``` json
+```
 {
   "name": "weather-thingy",
   "version": "0.1.0",
   "private": true,
   "main": "dist/weather-thingy.js",
   "source": "src/components/weather-thingy.vue",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "prebuild": "babel node_modules/@vue/web-component-wrapper/dist/vue-wc-wrapper.js -o node_modules/@vue/web-component-wrapper/dist/vue-wc-wrapper.js",
+    "build": "vue-cli-service build --name speedy-vue --target wc src/components/speedyvue.vue",
+    "lint": "vue-cli-service lint"
+  },
   ...
 }
 
@@ -209,19 +216,36 @@ module.exports = {
 };
 ```
 
-#### 4. Assemble and deploy the Vue application
+## 4. Assemble and deploy the Vue application
+
+To pack the component, run:
 
 ```
-    # Packs the component
-
-    $ npm run build
-
-    # Publish to the local maven repo
-
-    $ ./gradlew install
+npm run build
 ```
 
-#### 5. Add the component into uPortal
+To assemble the webjar and put in local maven repo, run:
+
+```
+./gradlew install
+```
+
+
+## 5. Add the component into uPortal
+
+### Create a portlet-definition.xml
+
+In the uPortal-start project make a copy of an existing portlet definition
+that has a web component. For example:
+
+```
+COPY:
+data/quickstart/portlet-definition/admin-dashboard.portlet-definition.xml
+
+TO:
+data/quickstart/portlet-definition/{component-name}.portlet-definition.xml
+```
+
 
 ```
     1. Make a copy of the portlet definition file and rename:
