@@ -207,7 +207,7 @@ to your `{ComponentName}`:
 ``` vue
 <script>
 export default {
-  name: 'HelloWord',
+  name: 'HelloWorld',
   props: {
     msg: String
   }
