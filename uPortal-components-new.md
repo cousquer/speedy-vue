@@ -11,7 +11,7 @@
     2. [create build.gradle file](#create-buildgradle-file)
     3. [add Gradle wrapper (gradlew) to the project](#add-gradle-wrapper-to-project)
     4. [rename HelloWorld.vue file](#rename-helloworldvue-file)
-    5. edit App.vue file
+    5. [edit App.vue file](#edit-appvue-file)
     6. edit package.json file
 3. [Edit the Vue application](#3-edit-the-vue-application)
 4. [Assemble and deploy the Vue application](#4-assemble-and-deploy-the-vue-application)
@@ -139,7 +139,7 @@ the rest of the required editing in the IDE.
 
 ### Rename HelloWorld.vue file
 
-Rename the generated HelloWorld.vue file (replace **{component-name}** with yours:
+Rename the generated HelloWorld.vue file, replace **{component-name}** with yours:
 
 ```
 FROM:
@@ -148,6 +148,28 @@ src/components/HelloWorld.vue
 TO:
 src/components/{component-name}.vue
 ```
+
+### Edit App.vue file
+
+Rename the imports.generated HelloWorld.vue file, replace **{component-name}** with yours:
+
+``` vue
+// FROM:
+import HelloWorld from './components/HelloWorld.vue'
+
+// TO:
+import HelloWorld from './components/{component-name}.vue'
+```
+
+
+```
+FROM:
+src/components/HelloWorld.vue
+
+TO:
+src/components/{component-name}.vue
+```
+
 
 ## Got to here
 

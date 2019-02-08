@@ -6,6 +6,7 @@
 </template>
 
 <script>
+  // what
 import HelloWorld from './components/speedyvue.vue'
 
 export default {
