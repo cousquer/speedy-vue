@@ -9,9 +9,10 @@
 2. [Generate the Vue application](#2-generate-the-vue-application)
     1. [create gradle.properties file](#create-gradleproperties-file)
     2. [create build.gradle file](#create-buildgradle-file)
-    3. rename .vue file
-    4. edit App.vue file
-    5. edit package.json file
+    3. [add Gradle wrapper (gradlew) to the project](#add-gradle-wrapper-to-project)
+    4. [rename HelloWorld.vue file](#rename-helloworldvue-file)
+    5. edit App.vue file
+    6. edit package.json file
 3. [Edit the Vue application](#3-edit-the-vue-application)
 4. [Assemble and deploy the Vue application](#4-assemble-and-deploy-the-vue-application)
 5. [Add the component into uPortal](#5-add-the-component-into-uportal)
@@ -124,7 +125,9 @@ resource server and speed up browser response, or if you are building on
 Windows, try this [build.gradle for Linux and Mac OS](#buildgradle-for-linux-and-mac-os)
 or this [build.gradle for Windows](#buildgradle-for-windows).
 
-D. Add the Gradle wrapper (gradlew) to the project.
+### Add Gradle wrapper to project
+
+Run this:
 
 ```
 gradle wrapper --gradle-version=5.1.1
@@ -134,8 +137,9 @@ Note: now that the project has a build.gradle file and a Gradle wrapper, an
 IDE like IntelliJ IDEA will recognize it as a Gradle project. You could do
 the rest of the required editing in the IDE.
 
-E. Rename the generated HelloWorld file (replace **{component-name}** with
-desired name):
+### Rename HelloWorld.vue file
+
+Rename the generated HelloWorld.vue file (replace **{component-name}** with yours:
 
 ```
 FROM:
