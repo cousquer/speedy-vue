@@ -1,6 +1,6 @@
 # Develop Vue Web Components for uPortal
 
-## Step by Step guide for vue.js component
+## Step by Step guide for Vue.js component
 1. [Prerequisites](#1-prerequisites)
     1. [Node.js](#nodejs)
     2. [Vue CLI](#vue-cli)
@@ -21,7 +21,6 @@
     2. [edit portlet definition](#edit-portlet-definition)
     3. [replace CDATA in portlet definition](#replace-cdata-in-portlet-definition)
     4. [other options for portlet definition](#other-options-for-portlet-definition)
-       (don't forget to add permissions)
     5. [add webjar to resource server](#add-webjar-to-resource-server)
 6. Select the component in uPortal (note that in the default uPortal-start
 it appears that you can only add to other tabs, not the default home tab,
@@ -149,7 +148,7 @@ the rest of the required editing in the IDE.
 
 ### Rename HelloWorld.vue
 
-Rename the generated HelloWorld.vue file, replace **{component-name}** with yours:
+Rename the generated HelloWorld.vue file, replace `{component-name}` with yours:
 
 ```
 FROM:
@@ -161,7 +160,7 @@ src/components/{component-name}.vue
 
 ### Edit App.vue
 
-Rename the imports.generated HelloWorld.vue file, replace **{component-name}** with yours:
+Rename the imports.generated HelloWorld.vue file, replace `{component-name}` with yours:
 
 ``` javascript
 // FROM:
@@ -174,7 +173,8 @@ import HelloWorld from './components/{component-name}.vue'
 ### Edit package.json
 
 The `{component-name}` after `--name` _**must**_ have a
-hyphen, for example `--name weather-thingy`. Change the following:
+hyphen, for example `--name weather-thingy`. Change the following and
+replace `{component-name}` with yours:
 
 ```
 // FROM:
@@ -193,7 +193,7 @@ Add these top-level declarations:
   "source": "src/components/{component-name}.vue",
 ```
 
-For example:
+It should look something like this when you've finished editing:
 
 ```
 {
@@ -232,7 +232,8 @@ To pack the component, run:
 npm run build
 ```
 
-To assemble the webjar and put in local maven repo, run:
+To assemble the webjar and put it in the local maven repo where the uPortal-start
+project can find it, run:
 
 ```
 ./gradlew install
@@ -314,7 +315,7 @@ META-INF/resources/webjars/uportal__speedy-vue/0.1.0-SNAPSHOT/dist/weather-thing
 ```
 
 So the name of the min.js file is **weather-thingy.min.js**, which is what
-you put in the CDATA <script> tag.
+you put in the CDATA `<script>` tag.
 
 ### Other options for portlet definition
 
@@ -336,6 +337,18 @@ To remove Chrome:
     </parameter>
 ```
 
+To grant security to everyone to browse for the web component and select it:
+
+``` xml
+    <group>Everyone</group>
+    <permissions>
+        <permission system="UP_PORTLET_SUBSCRIBE" activity="BROWSE">
+            <group>Everyone</group>
+        </permission>
+    </permissions>
+
+```
+
 ### Add webjar to resource server
 
 In the `overlays/resource-server/build.gradle` file in the uPortal-start
@@ -350,6 +363,18 @@ For example:
 ```
     runtime "org.webjars.npm:uportal__weather-thingy:0.1.0-SNAPSHOT@jar"
 ```
+
+### Rebuild uPortal-start
+
+Rebuild the **uPortal-start** project to populate the database with the new
+portlet definition and load the new webjar into the resource server.
+
+```
+./gradlew portalInit
+```
+
+When you start uPortal, you should be able to find the new component when
+you select *Customize > Add Stuff*.
 
 # Appendix
 ## Node.js installation
