@@ -277,6 +277,15 @@ To pack the component, run:
 npm run build
 ```
 
+You can optionally check that the component will run properly with:
+
+```
+npm run serve
+```
+
+Then go to the address specified in your browser (for example http://localhost:8080)
+to see if it displays.
+
 To assemble the webjar and put it in the local maven repo where the uPortal-start
 project can find it, run:
 
