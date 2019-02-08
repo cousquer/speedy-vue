@@ -351,55 +351,6 @@ For example:
     runtime "org.webjars.npm:uportal__weather-thingy:0.1.0-SNAPSHOT@jar"
 ```
 
-
-
-
-
-
-
-
-
-```
-    1. Make a copy of the portlet definition file and rename:
-
-     data/quickstart/portlet-definition/admin-dashboard.portlet-definition.xml =>  data/quickstart/portlet-definition/{component-name}.portlet-definition.xml
-
-    2. In the copied file make the follwing changes to these fields:
-
-        <title>{component-name}</title>
-        <name>{component-name}</name>
-        <fname>{component-name}</fname>
-        <desc>My new sample Vue component</desc>
-
-    3. change
-		<parameter>                        =>         <parameter>
-			<name>chromeStyle</name>   =>            <name>showChrome</name>
-			<value>no-chrome</value>   =>            <value>true</value>
-		</parameter>                       =>         </parameter>
-
-    4. Replace the CDATA section of the file with this:
-
-    <![CDATA[
-           <script src="https://unpkg.com/vue"></script>
-           <script type="text/javascript" src="/resource-server/webjars/uportal__{component-name}/dist/{component-min-name}.min.js"></script>
-            <{component-name}></{component-name}>
-       ]]>
-
-
-	***to find the component min name
-	    $ cd ~/.m2/repository/org/webjars/npm/uportal__{component-name}/0.1.0-SNAPSHOT/
-
-	    $ jar tvf uportal__{whatever you found there}-0.1.0-SNAPSHOT.jar | grep min.js
-	this will give you the right name of the min.js file {component-min-name}
-
-    5. Add the webjar as a dependency:
-
-        In overlays/resource-server/build.gradle, add the follwing runtime dependency:
-
-             runtime "org.webjars.npm:uportal__{component-name}:0.1.0-SNAPSHOT@jar"
-
-```
-
 # Appendix
 ## Node.js installation
 ### Mac OS X
