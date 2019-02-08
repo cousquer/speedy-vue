@@ -74,7 +74,7 @@ re-run the `npm install` command above.
 
 ## 3. Edit the Vue application
 
-### Create gradle.properties file
+### Create gradle.properties
 
 In the root directory, create a **gradle.properties** file, with the
 following content:
