@@ -335,7 +335,7 @@ To remove Chrome:
     </parameter>
 ```
 
-To grant security to everyone to browse for the web component and select it:
+To grant permission to everyone to browse for the web component and select it:
 
 ``` xml
     <group>Everyone</group>
@@ -466,7 +466,3 @@ task cleanUp(type: Delete) {
 
 jar.finalizedBy cleanUp
 ```
-
-
-
-

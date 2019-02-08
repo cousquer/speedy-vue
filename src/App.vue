@@ -1,18 +1,18 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Greetings Earthlings!"/>
+    <SpeedyVue msg="Greetings Earthlings!"/>
   </div>
 </template>
 
 <script>
   // what
-import HelloWorld from './components/speedyvue.vue'
+import SpeedyVue from './components/speedyvue.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    SpeedyVue
   }
 }
 </script>
