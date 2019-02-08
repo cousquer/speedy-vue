@@ -179,7 +179,7 @@ import HelloWorld from './components/{component-name}.vue'
 In **App.vue** you can also change the following from `HelloWorld` to
 your `{ComponentName}`:
 
-```
+``` vue
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
@@ -205,7 +205,7 @@ export default {
 In **{component-name}.vue** you can also change the following from `HelloWorld`
 to your `{ComponentName}`:
 
-```
+``` vue
 <script>
 export default {
   name: '{ComponentName}',
