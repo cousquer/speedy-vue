@@ -217,7 +217,7 @@ export default {
 
 ### Edit package.json
 
-The `{component-name}` after `--name` _**must**_ have a
+In **package.json** the `{component-name}` after `--name` _**must**_ have a
 hyphen, for example `--name weather-thingy`. Change the following and
 replace `{component-name}` with yours:
 
