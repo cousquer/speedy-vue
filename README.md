@@ -70,7 +70,7 @@ npm install --save-dev @babel/{cli,plugin-transform-runtime,preset-env}
 ```
 
 **Note:** whenever you modify dependencies in the Vue application you must
-re-run the `npm install` command above with the dependencies listed.
+re-run the `npm install` command above.
 
 ## 3. Edit the Vue application
 
