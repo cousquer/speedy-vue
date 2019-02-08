@@ -7,12 +7,12 @@
     3. [Maven](#maven)
     4. [Gradle](#gradle)
 2. [Generate the Vue application](#2-generate-the-vue-application)
-    1. [create gradle.properties file](#create-gradleproperties-file)
-    2. [create build.gradle file](#create-buildgradle-file)
+    1. [create gradle.properties](#create-gradleproperties)
+    2. [create build.gradle](#create-buildgradle)
     3. [add Gradle wrapper (gradlew) to the project](#add-gradle-wrapper-to-project)
-    4. [rename HelloWorld.vue file](#rename-helloworldvue-file)
-    5. [edit App.vue file](#edit-appvue-file)
-    6. edit package.json file
+    4. [rename HelloWorld.vue](#rename-helloworldvue)
+    5. [edit App.vue](#edit-appvue)
+    6. [edit package.json](#edit-packagejson)
 3. [Edit the Vue application](#3-edit-the-vue-application)
 4. [Assemble and deploy the Vue application](#4-assemble-and-deploy-the-vue-application)
 5. [Add the component into uPortal](#5-add-the-component-into-uportal)
@@ -70,7 +70,7 @@ following content:
 group=org.webjars.npm
 ```
 
-### Create build.gradle file
+### Create build.gradle
 
 Copy **build.gradle** file from @uportal directory of **uPortal-web-components**
 project (or use one from [the appendix](#buildgradle-files)).
@@ -137,7 +137,7 @@ Note: now that the project has a build.gradle file and a Gradle wrapper, an
 IDE like IntelliJ IDEA will recognize it as a Gradle project. You could do
 the rest of the required editing in the IDE.
 
-### Rename HelloWorld.vue file
+### Rename HelloWorld.vue
 
 Rename the generated HelloWorld.vue file, replace **{component-name}** with yours:
 
@@ -149,11 +149,11 @@ TO:
 src/components/{component-name}.vue
 ```
 
-### Edit App.vue file
+### Edit App.vue
 
 Rename the imports.generated HelloWorld.vue file, replace **{component-name}** with yours:
 
-``` vue
+``` javascript
 // FROM:
 import HelloWorld from './components/HelloWorld.vue'
 
@@ -161,13 +161,24 @@ import HelloWorld from './components/HelloWorld.vue'
 import HelloWorld from './components/{component-name}.vue'
 ```
 
+### Edit package.json
+
+A. First edit the sripts:
+
+```diff
+- "build": "vue-cli-service build",
++ "prebuild": "babel node_modules/@vue/web-component-wrapper/dist/vue-wc-wrapper.js -o node_modules/@vue/web-component-wrapper/dist/vue-wc-wrapper.js",
++ "build": "vue-cli-service build --name {component-name} --target wc src/components/{component-name}.vue",
+```
 
 ```
-FROM:
-src/components/HelloWorld.vue
+// FROM:
+    "build": "vue-cli-service build",
 
-TO:
-src/components/{component-name}.vue
+// TO:
+    "prebuild": "babel node_modules/@vue/web-component-wrapper/dist/vue-wc-wrapper.js -o node_modules/@vue/web-component-wrapper/dist/vue-wc-wrapper.js",
+    "build": "vue-cli-service build --name {component-name} --target wc src/components/{component-name}.vue",
+
 ```
 
 
