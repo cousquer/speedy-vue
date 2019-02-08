@@ -22,9 +22,7 @@
     3. [replace CDATA in portlet definition](#replace-cdata-in-portlet-definition)
     4. [other options for portlet definition](#other-options-for-portlet-definition)
     5. [add webjar to resource server](#add-webjar-to-resource-server)
-6. Select the component in uPortal (note that in the default uPortal-start
-it appears that you can only add to other tabs, not the default home tab,
-which may be locked.)
+    6. [rebuild uPortal-start](#rebuild-uportal-start)
 
 ## 1. Prerequisites
 #### Node.js
