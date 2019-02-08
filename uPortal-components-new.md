@@ -18,10 +18,11 @@
 4. [Assemble and deploy the Vue application](#4-assemble-and-deploy-the-vue-application)
 5. [Add the component into uPortal](#5-add-the-component-into-uportal)
     1. [create a portlet-definition.xml](#create-a-portlet-definitionxml)
-    2. [replace CDATA in portlet definition](#replace-cdata-in-portlet-definition)
-    3. [other options for portlet definition](#other-options-for-portlet-definition)
+    2. [edit portlet definition](#edit-portlet-definition)
+    3. [replace CDATA in portlet definition](#replace-cdata-in-portlet-definition)
+    4. [other options for portlet definition](#other-options-for-portlet-definition)
        (don't forget to add permissions)
-    4. [add webjar to resource server](#add-webjar-to-resource-server)
+    5. [add webjar to resource server](#add-webjar-to-resource-server)
 6. Select the component in uPortal (note that in the default uPortal-start
 it appears that you can only add to other tabs, not the default home tab,
 which may be locked.)
