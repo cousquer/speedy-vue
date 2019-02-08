@@ -69,6 +69,9 @@ cd {component-name}
 npm install --save-dev @babel/{cli,plugin-transform-runtime,preset-env}
 ```
 
+**Note:** whenever you modify dependencies in the Vue application you must
+re-run the `npm install` command above with the dependencies listed.
+
 ## 3. Edit the Vue application
 
 ### Create gradle.properties file
@@ -142,7 +145,7 @@ Run this:
 gradle wrapper --gradle-version=5.1.1
 ```
 
-Note: now that the project has a build.gradle file and a Gradle wrapper, an
+**Note:** now that the project has a build.gradle file and a Gradle wrapper, an
 IDE like IntelliJ IDEA will recognize it as a Gradle project. You could do
 the rest of the required editing in the IDE.
 
