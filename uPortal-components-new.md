@@ -13,6 +13,7 @@
     4. [rename HelloWorld.vue](#rename-helloworldvue)
     5. [edit App.vue](#edit-appvue)
     6. [edit package.json](#edit-packagejson)
+    7. [edit babel.config.js](#edit-babelconfigjs)
 3. [Edit the Vue application](#3-edit-the-vue-application)
 4. [Assemble and deploy the Vue application](#4-assemble-and-deploy-the-vue-application)
 5. [Add the component into uPortal](#5-add-the-component-into-uportal)
@@ -163,98 +164,49 @@ import HelloWorld from './components/{component-name}.vue'
 
 ### Edit package.json
 
-The `{component-name}` after `--name` **must** have a
-hyphen, for example '--name weather-thingy'. Change the following:
+The `{component-name}` after `--name` _**must**_ have a
+hyphen, for example `--name weather-thingy`. Change the following:
 
 ``` json
 // FROM:
     "build": "vue-cli-service build",
 
-// TO (be sure to rename {component-name}:
+// TO (be sure to rename {component-name}):
     "prebuild": "babel node_modules/@vue/web-component-wrapper/dist/vue-wc-wrapper.js -o node_modules/@vue/web-component-wrapper/dist/vue-wc-wrapper.js",
     "build": "vue-cli-service build --name {component-name} --target wc src/components/{component-name}.vue",
 
 ```
 
+Add these top-level declarations:
 
-## Got to here
-
-
-Change these:
-
-``` diff
-- "build": "vue-cli-service build",
-+ "prebuild": "babel node_modules/@vue/web-component-wrapper/dist/vue-wc-wrapper.js -o node_modules/@vue/web-component-wrapper/dist/vue-wc-wrapper.js",
-+ "build": "vue-cli-service build --name {component-name} --target wc src/components/{component-name}.vue",
+``` json
+  "main": "dist/{component-name}.js",
+  "source": "src/components/{component-name}.vue",
 ```
 
-Javascript sample:
+For example:
 
-``` Javascript
-  var Button = function (element, options) {
-    this.$element  = $(element)
-    this.options   = $.extend({}, Button.DEFAULTS, options)
-    this.isLoading = false
-  }
-```
-
-Replace:
-```
-```
-With:
-
-
-More stuff here:
+``` json
+{
+  "name": "weather-thingy",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/weather-thingy.js",
+  "source": "src/components/weather-thingy.vue",
+  ...
+}
 
 ```
-    1. In the root directory, create a gradle.properties file, with the following content:
 
-    group=org.webjars.npm
+### Edit babel.config.js
 
-    2. Copy build.gradle file from @uportal directory of uPortal-web-components project:
+Replace the contents of **babel.config.js** with this:
 
-		https://github.com/uPortal-contrib/uPortal-web-components/blob/master/%40uportal/build.gradle
-
-		Remove the subprojects line and its enclosing brackets from build.gradle file.
-
-    3. Add the gradlew wrapper to the project
-
-    $ gradle wrapper --gradle-version=5.1.1
-
-    4. Rename generated HelloWorld file:
-
-    rename src/components/HelloWorld.vue => src/components/{component-name}.vue
-
-    5. Rename imports. In the main App file.
-
-    # In src/App
-
-    import HelloWorld from './components/HelloWorld.vue' => import HelloWorld from './components/{component-name}.vue'
-
-5. Editing the package.json file
-
-    # First edit the sripts:
-
-    - "build": "vue-cli-service build",
-    + "prebuild": "babel node_modules/@vue/web-component-wrapper/dist/vue-wc-wrapper.js -o node_modules/@vue/web-component-wrapper/dist/vue-wc-wrapper.js",
-    + "build": "vue-cli-service build --name {component-name} --target wc src/components/{component-name}.vue",
-
-	# NOTE: the --name {component-name} must have a hyphen, for example speedy-vue.
-
-    # Add these top level declarations:
-
-    + "main": "dist/{component-name}.js",
-    + "source": "src/components/{component-name}.vue",
-
-6. Replace the content of babel.config.js file with this:
-
-    module.exports = {
+```
+module.exports = {
     presets: ['@babel/preset-env'],
-        plugins: [['@babel/plugin-transform-runtime', { useESModules: true }]]
-    };
-
-
-
+    plugins: [['@babel/plugin-transform-runtime', { useESModules: true }]]
+};
 ```
 
 #### 4. Assemble and deploy the Vue application
