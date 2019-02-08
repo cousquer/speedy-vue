@@ -151,7 +151,7 @@ the rest of the required editing in the IDE.
 
 ### Rename HelloWorld.vue
 
-Rename the generated **HelloWorld.vue** file to your `{component-name}`:
+Rename the generated **/src/components/HelloWorld.vue** file to your `{component-name}`:
 
 ```
 FROM:
@@ -201,7 +201,7 @@ export default {
 
 #### Optional edits in {component-name}.vue
 
-In **{component-name}.vue** you can also change the following from `HelloWorld`
+In **src/components/{component-name}.vue** you can also change the following from `HelloWorld`
 to your `{ComponentName}`:
 
 ``` vue
