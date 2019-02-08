@@ -176,8 +176,7 @@ import HelloWorld from './components/{component-name}.vue'
 
 #### Optional edits in App.vue
 
-In **App.vue** you can also change every instance of `HelloWorld` to
-your `{ComponentName}`:
+In **App.vue** you can change every instance of `HelloWorld` to your `{ComponentName}`:
 
 ``` vue
 <template>
@@ -201,7 +200,7 @@ export default {
 
 #### Optional edits in {component-name}.vue
 
-In **src/components/{component-name}.vue** you can also change every instance
+In **src/components/{component-name}.vue** you can change every instance
 of `HelloWorld` to your `{ComponentName}`:
 
 ``` vue
